@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>OS Process Scheduling Simulator</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+					<span class="image avatar"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=facearea&w=256&h=256&facepad=2" alt="CPU Icon" /></span>
+					<h1 id="logo"><a href="#">OS Process Scheduler</a></h1>
+					<p>Group 42</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a class="icon solid fa-home" href="#one">Home</a></li>
+						<li><a class="icon solid fa-cog" href="#two">Simulator</a></li>
+						<li><a class="icon solid fa-chart-line" href="#three">Algorithms</a></li>
+						<li><a class="icon solid fa-users" href="#four">Team</a></li>
+					</ul>
+				</nav>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					<div id="main">
+						<!-- One -->
+							<section id="one">
+								<div class="image main" data-position="center">
+									<img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80" alt="CPU Banner" />
+								</div>
+								<div class="container">
+									<header class="major">
+										<h2>Process Scheduling Algorithms</h2>
+										<p>Interactive CPU Scheduling Simulator</p>
+									</header>
+									<div class="feature-cards">
+										<div class="feature-card">
+											<i class="fas fa-chart-line"></i>
+											<h3>Real-time Visualization</h3>
+											<p>Watch processes execute with beautiful Gantt charts</p>
+										</div>
+										<div class="feature-card">
+											<i class="fas fa-code-branch"></i>
+											<h3>Multiple Algorithms</h3>
+											<p>Compare different scheduling strategies</p>
+										</div>
+										<div class="feature-card">
+											<i class="fas fa-tachometer-alt"></i>
+											<h3>Performance Metrics</h3>
+											<p>Analyze waiting time, turnaround time, and CPU utilization</p>
+										</div>
+									</div>
+								</div>
+							</section>
+
+						<!-- Two -->
+							<section id="two">
+								<div class="container">
+									<h2>Process Scheduler</h2>
+									<div class="simulator-container">
+										<div class="algorithm-selector">
+											<h3>Select Algorithm</h3>
+											<div class="algorithm-grid">
+												<div class="algorithm-option">
+													<input type="radio" name="algo" id="fcfs" checked>
+												
+													<label for="fcfs"><i class="fas fa-clock"></i> FCFS</label>
+												</div>
+												<div class="algorithm-option">
+													<input type="radio" name="algo" id="sjf">
+													<label for="sjf"><i class="fas fa-sort-numeric-down"></i> SJF</label>
+												</div>
+												<div class="algorithm-option">
+													<input type="radio" name="algo" id="ljf">
+													<label for="ljf"><i class="fas fa-sort-numeric-up"></i> LJF</label>
+												</div>
+												<div class="algorithm-option">
+													<input type="radio" name="algo" id="rr">
+													<label for="rr"><i class="fas fa-sync"></i> Round Robin</label>
+												</div>
+												<div class="algorithm-option">
+													<input type="radio" name="algo" id="srjf">
+													<label for="srjf"><i class="fas fa-exchange-alt"></i> SRTF</label>
+												</div>
+												<div class="algorithm-option">
+													<input type="radio" name="algo" id="lrjf">
+													<label for="lrjf"><i class="fas fa-random"></i> LRTF</label>
+												</div>
+												<div class="algorithm-option">
+													<input type="radio" name="algo" id="hrrn">
+													<label for="hrrn"><i class="fas fa-percentage"></i> HRRN</label>
+												</div>
+											</div>
+										</div>
+
+										<div class="process-table-container">
+											<button class="add-process-btn main-add-btn" style="margin-bottom:10px;"><i class="fas fa-plus"></i> Add Process</button>
+											<table class="main-table">
+												<thead>
+													<tr>
+														<th>Process ID</th>
+														<th class="priority hide">Priority</th>
+														<th>Arrival Time</th>
+														<th>Burst Time</th>
+														<th>Actions</th>
+													</tr>
+												</thead>
+												<tbody>
+													
+												</tbody>
+											</table>
+										</div>
+
+										<div id="time-quantum" class="hide">
+											<label for="tq">Time Quantum:</label>
+											<input type="number" id="tq" min="1" value="2">
+										</div>
+
+										<div class="simulation-controls">
+											<div class="speed-control">
+												<label for="simulation-speed">Simulation Speed:</label>
+												<input type="range" id="simulation-speed" min="1" max="5" value="3">
+											</div>
+											<div class="control-buttons">
+												<button class="sample-data-btn"><i class="fas fa-vial"></i> Load Sample Data</button>
+												<button class="export-btn"><i class="fas fa-file-export"></i> Export Config</button>
+												<button class="import-btn"><i class="fas fa-file-import"></i> Import Config</button>
+												<button class="calculate"><i class="fas fa-play"></i> Run Simulation</button>
+											</div>
+										</div>
+
+										<div class="visualization-container">
+											<div id="gantt-chart"></div>
+											<div class="metrics-panel">
+												<div class="metric-card">
+													<h4>Average Waiting Time</h4>
+													<p id="avg-waiting-time">0.00</p>
+												</div>
+												<div class="metric-card">
+													<h4>Average Turnaround Time</h4>
+													<p id="avg-turnaround-time">0.00</p>
+												</div>
+												<div class="metric-card">
+													<h4>CPU Utilization</h4>
+													<p id="cpu-utilization">0%</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+
+						<!-- Page Replacement Algorithms Section -->
+						<section id="page-replacement">
+							<div class="container">
+								<h2>Page Replacement Algorithms</h2>
+								<div class="simulator-container">
+									<div class="algorithm-selector">
+										<h3>Select Algorithm</h3>
+										<div class="algorithm-grid">
+											<div class="algorithm-option">
+												<input type="radio" name="page-algo" id="fifo" checked>
+												<label for="fifo"><i class="fas fa-list-ol"></i> FIFO</label>
+											</div>
+											<div class="algorithm-option">
+												<input type="radio" name="page-algo" id="lru">
+												<label for="lru"><i class="fas fa-history"></i> LRU</label>
+											</div>
+											<div class="algorithm-option">
+												<input type="radio" name="page-algo" id="optimal">
+												<label for="optimal"><i class="fas fa-bullseye"></i> Optimal</label>
+											</div>
+										</div>
+									</div>
+									<div class="preset-controls" style="display:flex;gap:20px;align-items:center;margin-bottom:10px;">
+										<div>
+											<label for="num-frames"><b>Number of Frames:</b></label>
+											<input type="number" id="num-frames" min="1" max="10" value="3" style="width:60px;">
+										</div>
+										<div>
+											<label for="preset-refs"><b>Preset Reference Strings:</b></label>
+											<select id="preset-refs">
+												<option value="">-- Select Preset --</option>
+												<option value="7 0 1 2 0 3 0 4 2 3 0 3 2">7 0 1 2 0 3 0 4 2 3 0 3 2</option>
+												<option value="1 2 3 4 1 2 5 1 2 3 4 5">1 2 3 4 1 2 5 1 2 3 4 5</option>
+												<option value="0 2 1 6 4 0 1 0 3 1 2 1">0 2 1 6 4 0 1 0 3 1 2 1</option>
+												<option value="3 2 1 0 3 2 4 3 2 1 0 4">3 2 1 0 3 2 4 3 2 1 0 4</option>
+											</select>
+										</div>
+									</div>
+									<div class="process-table-container">
+										<table class="main-table page-table">
+											<thead>
+												<tr>
+													<th>Reference String</th>
+													<th>Actions</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td><input type="text" class="page-reference-input" placeholder="e.g. 7 0 1 2 0 3 0 4 2 3 0 3 2" style="width: 100%"></td>
+													<td>
+														<button class="add-page-btn"><i class="fas fa-plus"></i></button>
+														<button class="remove-page-btn"><i class="fas fa-minus"></i></button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="simulation-controls">
+										<div class="speed-control">
+											<label for="page-simulation-speed">Simulation Speed:</label>
+											<input type="range" id="page-simulation-speed" min="1" max="5" value="3">
+										</div>
+										<div class="control-buttons">
+											<button class="page-sample-data-btn"><i class="fas fa-vial"></i> Load Sample Data</button>
+											<button class="page-calculate"><i class="fas fa-play"></i> Run Simulation</button>
+										</div>
+									</div>
+									<div class="visualization-container">
+										<div id="page-replacement-chart"></div>
+										<div class="metrics-panel">
+											<div class="metric-card">
+												<h4>Page Faults</h4>
+												<p id="page-faults">0</p>
+											</div>
+											<div class="metric-card">
+												<h4>Page Hits</h4>
+												<p id="page-hits">0</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<!-- Three -->
+							<section id="three">
+								<div class="container">
+									<h3>Scheduling & Page Replacement Algorithms</h3>
+									<div style="margin-bottom:18px;">
+										<label for="algo-select"><b>Select Algorithm (Process or Page Replacement):</b></label>
+										<select id="algo-select">
+											<option value="fcfs">First Come First Serve (FCFS)</option>
+											<option value="sjf">Shortest Job First (SJF)</option>
+											<option value="ljf">Longest Job First (LJF)</option>
+											<option value="rr">Round Robin (RR)</option>
+											<option value="srjf">Shortest Remaining Time First (SRTF)</option>
+											<option value="lrjf">Longest Remaining Time First (LRJF)</option>
+											<option value="hrrn">Highest Response Ratio Next (HRRN)</option>
+											<option value="fifo">FIFO (Page Replacement)</option>
+											<option value="lru">LRU (Page Replacement)</option>
+											<option value="optimal">Optimal (Page Replacement)</option>
+										</select>
+									</div>
+									<div id="algo-learn-content" style="background:#f7f7f7;padding:24px 20px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);min-height:120px;"></div>
+								</div>
+							</section>
+
+						<!-- Four -->
+							<section id="four">
+								<div class="container">
+									<h3>Gold Diggers</h3>
+									<div class="team-grid">
+										<div class="team-member">
+											<h4>Vatsalya Kharkwal</h4>
+											<p>Team Lead</p>
+										</div>
+										<div class="team-member">
+											<h4>Vansh Raj Soam</h4>
+											<p>Team Member</p>
+										</div>
+										<div class="team-member">
+											<h4>Priyanshu Pandey</h4>
+											<p>Team Member</p>
+										</div>
+										<div class="team-member">
+											<h4>Priyanshu Mishra</h4>
+											<p>Team Member</p>
+										</div>
+									</div>
+								</div>
+							</section>
+					</div>
+			</div>
+
+		<!-- AI Assistant Chat Button and Window -->
+		<button id="ai-assistant-btn" style="position:fixed;bottom:30px;right:30px;z-index:9999;background:#4a90e2;color:white;border:none;border-radius:50%;width:60px;height:60px;box-shadow:0 2px 8px rgba(0,0,0,0.2);font-size:28px;cursor:pointer;"><i class="fas fa-robot"></i></button>
+		<div id="ai-assistant-chat" style="display:none;position:fixed;bottom:100px;right:30px;width:350px;max-width:90vw;height:420px;z-index:10000;background:white;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.18);overflow:hidden;flex-direction:column;">
+		  <div id="ai-assistant-header" style="background:linear-gradient(90deg,#4a90e2 60%,#357ab8 100%);color:white;padding:12px 20px 12px 16px;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:48px;">
+			<span style="display:flex;align-items:center;gap:8px;font-size:18px;"><i class="fas fa-robot"></i> AI Assistant</span>
+			<div id="ai-assistant-header-btns" style="display:flex;align-items:center;gap:4px;">
+			  <!-- Expand button will be injected by JS only in minimized state -->
+			  <button id="ai-assistant-close" style="background:rgba(255,255,255,0.18);border:none;color:white;font-size:20px;cursor:pointer;border-radius:8px;padding:4px 12px;transition:background 0.2s;">&times;</button>
+			</div>
+		  </div>
+		  <div id="ai-assistant-messages" style="flex:1;overflow-y:auto;padding:12px;background:#f7f7f7;"></div>
+		  <form id="ai-assistant-form" style="display:flex;border-top:1px solid #eee;">
+			<input id="ai-assistant-input" type="text" placeholder="Ask me anything..." autocomplete="off" style="flex:1;padding:10px;border:none;font-size:15px;outline:none;">
+			<button type="submit" style="background:#4a90e2;color:white;border:none;padding:0 18px;font-size:18px;cursor:pointer;">Send</button>
+		  </form>
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+			<script src="script.js"></script>
+			<script src="assistant.js"></script>
+	</body>
+</html>
+
+
+
+										
